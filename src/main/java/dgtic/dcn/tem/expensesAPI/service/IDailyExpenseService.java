@@ -11,5 +11,10 @@ public interface IDailyExpenseService {
 	List<DailyExpense> findDailyExpensesByTrip(String tripId);
 	
 	Optional<DailyExpense> findDailyExpenseById(String id); 
-
+	
+	DailyExpense saveExpense(DailyExpense expense);
+		
+	DailyExpense updateExpense(String id, DailyExpense expense);
+	
+	void deleteExpense(String id);
 }

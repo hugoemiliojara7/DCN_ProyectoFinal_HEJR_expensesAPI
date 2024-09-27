@@ -30,5 +30,27 @@ public class DailyExpenseService implements IDailyExpenseService {
 	public Optional<DailyExpense> findDailyExpenseById(String id) {		
 		return repository.findById(id);
 	}
+	
+	@Override
+	public DailyExpense saveExpense(DailyExpense expense) {		
+		return repository.save(expense);
+	}
 
+	@Override
+	public DailyExpense updateExpense(String id, DailyExpense expense) {
+		Optional<DailyExpense> oldExpense = repository.findById(id);
+		
+		if (oldExpense.isPresent()) {
+			repository.save(expense);
+			return expense;
+		}
+		return null;
+	}
+
+	@Override
+	public void deleteExpense(String id) {
+		repository.deleteById(id);
+	} 
+
+	
 }

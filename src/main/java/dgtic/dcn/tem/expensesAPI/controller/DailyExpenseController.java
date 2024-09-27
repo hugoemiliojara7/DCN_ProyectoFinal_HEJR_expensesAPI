@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import dgtic.dcn.tem.expensesAPI.model.DailyExpense;
 import dgtic.dcn.tem.expensesAPI.service.IDailyExpenseService;
 
-
-
 @RestController
 public class DailyExpenseController implements DailyExpenseApi {
 	
@@ -39,4 +37,23 @@ public class DailyExpenseController implements DailyExpenseApi {
 		return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 	}
 
+	@Override
+	public DailyExpense saveDailyExpense(DailyExpense expense) {
+		return service.saveExpense(expense);
+	}
+
+	@Override
+	public ResponseEntity<DailyExpense> updateDailyExpense(String id, DailyExpense expense) {
+		DailyExpense updatedExpense = service.updateExpense(id, expense);
+		
+		if (updatedExpense != null)
+			return new ResponseEntity<>(updatedExpense, HttpStatus.OK) ;
+		
+		return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+	}
+
+	@Override
+	public void deleteDailyExpense(String id) {
+		service.deleteExpense(id);
+	} 
 }
