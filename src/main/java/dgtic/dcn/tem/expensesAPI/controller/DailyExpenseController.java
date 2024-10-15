@@ -27,6 +27,7 @@ public class DailyExpenseController implements DailyExpenseApi {
 		return service.findDailyExpensesByTrip(tripId);
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public ResponseEntity<DailyExpense> getExpenseById(String id) {
 		Optional<DailyExpense> expense = service.findDailyExpenseById(id);
@@ -42,6 +43,7 @@ public class DailyExpenseController implements DailyExpenseApi {
 		return service.saveExpense(expense);
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public ResponseEntity<DailyExpense> updateDailyExpense(String id, DailyExpense expense) {
 		DailyExpense updatedExpense = service.updateExpense(id, expense);
